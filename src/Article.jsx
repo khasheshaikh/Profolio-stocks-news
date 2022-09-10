@@ -9,8 +9,7 @@ export const Article = ({ item }) => {
           <img
             src={item.banner_image}
             alt="..."
-            height="200px"
-            width="200px"
+            width="250px"
             class="img-thumbnail"
           ></img>
           <div className="title">
@@ -18,6 +17,8 @@ export const Article = ({ item }) => {
             <p class="lead">
               <a href={item.url}>Learn more</a>
             </p>
+
+            <p> {item.time_published}</p>
           </div>
         </div>
       </div>

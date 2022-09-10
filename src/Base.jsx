@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Article } from "./Article";
-
 import "./Base.css";
 
 export const Base = () => {
-  const [wordSearch, setWordSearch] = useState();
+  
   const [data, setData] = useState([]);
   useEffect(() => {
     async function getData() {
@@ -12,7 +11,7 @@ export const Base = () => {
         "https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=AAPL&apikey=3UMZBONPRJC6CCXF"
       ).then((response) => response.json());
 
-      console.log(actualData);
+      console.log({...actualData.feed});
       setData([...actualData.feed]);
     }
     getData();
@@ -21,16 +20,12 @@ export const Base = () => {
 
   return (
     <div>
-      <input
-        placeholder="type a word ..."
-        onChange={(e) => setWordSearch(e.target.value)}
-      ></input>
-      <button>search</button>
-      <h1>heloo</h1>
+      <div className="search">
+        <input placeholder="type a word ..."></input>
+        <button>search</button>
+      </div>
 
-      {data.map((item) => (
-        <Article item={item} />
-      ))}
+      {data.map((item) =>(<Article item={item} />))}
     </div>
   );
 };
