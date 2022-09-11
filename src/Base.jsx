@@ -4,10 +4,9 @@ import axios from "axios";
 import "./Base.css";
 
 export const Base = () => {
- 
   const [wordSearch, setWordSearch] = useState("");
   const [data, setData] = useState([]);
-  
+
   // useEffect(() => {
   //   async function getData() {
   //     const actualData = await fetch(
@@ -30,20 +29,18 @@ export const Base = () => {
         setData([...res.data.feed]);
       });
   };
-  
 
   return (
     <div>
       <div className="search">
-        <input placeholder="type a word ..." onChange={(e)=>setWordSearch(e.target.value)} ></input>
+        <input
+          placeholder="type a word ..."
+          onChange={(e) => setWordSearch(e.target.value)}
+        ></input>
         <button onClick={handleSearch}>search</button>
       </div>
 
-      { 
-      
-        data.map((item) => (
-        <Article item={item} />
-      ))}
+      {data.map((item, index) => index < 5 && <Article item={item} />)}
     </div>
   );
 };
