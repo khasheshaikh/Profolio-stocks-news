@@ -36,6 +36,7 @@ export const Base = () => {
         <input
           placeholder="type a word ..."
           onChange={(e) => setWordSearch(e.target.value)}
+          oninput="this.value = this.value.toUpperCase()"
         ></input>
         <button onClick={handleSearch}>search</button>
       </div>
